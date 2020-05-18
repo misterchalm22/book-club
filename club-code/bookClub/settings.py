@@ -11,9 +11,34 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
+import socket
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+try:
+    if '\\Repos\\' in os.path.dirname(
+      os.path.dirname(os.path.dirname(__file__))):
+        BASE_DIR = os.path.dirname(os.path.dirname(
+          os.path.dirname(__file__)))
+    else:
+        BASE_DIR = '/home/kidsbookclub/club/'
+except:
+    BASE_DIR = '/home/kidsbookclub/club/'
+hostname = socket.gethostname()
+
+def get_ip():
+    s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+    try:
+        # doesn't even have to be reachable
+        s.connect(('8.8.8.8', 1))
+        IP = s.getsockname()[0]
+    except:
+        IP = '127.0.0.1'
+    finally:
+        s.close()
+    return IP
+
+
+THIS_IP = get_ip()
 
 
 # Quick-start development settings - unsuitable for production
@@ -25,7 +50,7 @@ SECRET_KEY = '+32xbir115ct2ucsl8vl65glaqfia59wpv5=qj+#qr-m&0av=n'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1', 'kidsbookclub.pythonanywhere.com']
 
 
 # Application definition
@@ -37,7 +62,15 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'pages',
 ]
+
+MEDIA_URL = 'documents/'
+if BASE_DIR == '/home/kidsbookclub/club/':
+    MEDIA_ROOT = 'docs/'
+else:
+    MEDIA_ROOT = os.path.join(BASE_DIR, 'docs\\')
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -48,6 +81,9 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+LOGIN_REDIRECT_URL = 'home'
+LOGOUT_REDIRECT_URL = 'home'
 
 ROOT_URLCONF = 'bookClub.urls'
 
@@ -60,6 +96,7 @@ TEMPLATES = [
             'context_processors': [
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
+                'django.template.context_processors.media',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
             ],
@@ -118,3 +155,4 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static/')

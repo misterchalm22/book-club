@@ -1,12 +1,13 @@
 from django.urls import path
-from rollover import views
+from pages import views
 
 
 urlpatterns = [
     path('', views.user_home, name='userHome'),
-    path('review/', views.newReview, name='newReview'),
+    path('all/', views.all, name='all'),
     path('all/reviews/', views.allReviews, name='allReviews'),
-    path('wishlist/', views.user_wishlist, name='userWishlist'),
     path('all/wishlist', views.allWishlist, name='allWishlist'),
-    path('all/', views.all, name='all')
+    path('review/', views.newReview, name='newReview'),
+    path('reviews/', views.userReviews, name='userReviews'),
+    path('wishlist/', views.user_wishlist, name='userWishlist')
 ]
