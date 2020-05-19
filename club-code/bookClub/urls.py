@@ -19,10 +19,11 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.auth import views as auth_views
 from pages import urls as pages_urls
+from pages import views as pages_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('django.contrib.auth.urls')),
-    path('accounts/', include('django.contrib.auth.urls')),
-    path('', include(pages_urls))  # All urls found in pages app
+    path('', pages_views.welcome, name='welcome'),
+    path('club/', include(pages_urls)),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

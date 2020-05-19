@@ -44,7 +44,12 @@ def userReviews(request):
 
 def user_wishlist(request):
 	if request.user.is_authenticated:
-		return render(request, 'userhome.html')
+		return render(request, 'user_wishlist.html')
 	else:
 		return redirect('../../accounts/login/')
 
+def welcome(request):
+	if request.user.is_authenticated:
+		return render(request, 'welcome.html')
+	else:
+		return redirect('../../accounts/login/')
