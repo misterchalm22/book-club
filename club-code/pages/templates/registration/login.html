@@ -1,0 +1,21 @@
+{% extends "nav.html" %}
+
+{% block page_title %}Home{% endblock %}
+
+{% block home_active %}active{% endblock %}
+
+{% if user.is_authenticated %}
+  {% block body %}
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+      <p>Welcome, {{ user.get_username }}! You are logged in.</p>
+  {% endblock %}
+{% else %}
+  {% block body_not_logged_in %}
+    <h2>Login</h2>
+    <form method="post">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit">Login</button>
+    </form>
+  {% endblock %}
+{% endif %}
