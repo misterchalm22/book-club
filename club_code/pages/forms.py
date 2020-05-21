@@ -6,10 +6,10 @@ from django.db import models
 class NewReview(forms.Form):
     """Form fields for a book review."""
     
-    title = forms.CharField(label='Book Name', max_length=200)
+    title = forms.CharField(label='Book Title', max_length=200)
     author = forms.CharField(label='Author', max_length=200)
     illustrator = forms.CharField(
-    	label='Book Name', max_length=200, required=False)
+    	label='Illustrator', max_length=200, required=False)
     funniest = forms.CharField(	
     	widget=forms.Textarea,
     	max_length=500,
