@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block navbar %}
+	<div class="row">
+		<div class="col">
+			<a href='../../'>Home</a>
+		</div>
+		<div class="col">
+			<a href='../../../club/'>Visit the Book Club</a>
+		</div>
+		<div class="col"><a href='../../../club/review/'>New Book Review</a></div>
+		<div class="col">
+			<a href='../../../club/reviews/'>My Reviews</a>
+		</div>
+		<div class="col">
+			<a href='../../../club/wishlist/'>My Wish List</a>
+		</div>
+		<div class="col">
+			<a href="../../../club/all/reviews/">Everyone's Reviews</a>
+		</div>
+		<div class="col">
+			<a href='../../../club/all/'>Everyone's Stuff</a>
+		</div>
+	</div>
+	{% block body %}{% endblock %}
+{% endblock %}

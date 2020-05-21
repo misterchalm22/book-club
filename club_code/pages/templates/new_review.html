@@ -1,0 +1,91 @@
+{% extends "nav.html" %}
+
+{% block body %}
+	<p>New Review!</p>
+	  <form method="post" action="/club/">
+	  	{% csrf_token %}
+		<div class="rating", label="How do you rate this book?">
+			<label>
+				<input type="radio" name="stars" value="1" />
+				<span class="icon">★</span>
+			</label>
+			<label>
+				<input type="radio" name="stars" value="2" />
+				<span class="icon">★</span>
+				<span class="icon">★</span>
+			</label>
+			<label>
+				<input type="radio" name="stars" value="3" />
+				<span class="icon">★</span>
+				<span class="icon">★</span>
+				<span class="icon">★</span>
+			</label>
+			<label>
+				<input type="radio" name="stars" value="4" />
+				<span class="icon">★</span>
+				<span class="icon">★</span>
+				<span class="icon">★</span>
+				<span class="icon">★</span>
+			</label>
+			<label>
+				<input type="radio" name="stars" value="5" />
+				<span class="icon">★</span>
+				<span class="icon">★</span>
+				<span class="icon">★</span>
+				<span class="icon">★</span>
+				<span class="icon">★</span>
+			</label>
+		</div>
+		<div class="container">
+			<div class="row">
+				<label>{{ form.title.label }}</label>
+			</div>
+			<div class="row">
+				{{ form.title }}
+			</div>
+			<div class="row">
+				<label>{{ form.author.label }}</label>
+			</div>
+			<div class="row">
+				{{ form.author }}
+			</div>
+			<div class="row">
+				<label>{{ form.illustrator.label }}</label>
+			</div>
+			<div class="row">
+				{{ form.illustrator }}
+			</div>
+			<div class="row">
+				<label>{{ form.funniest.label }}</label>
+			</div>
+			<div class="row">
+				{{ form.funniest }}
+			</div>
+			<div class="row">
+				<label>{{ form.exciting.label }}</label>
+			</div>
+			<div class="row">
+				{{ form.exciting }}
+			</div>
+			<div class="row">
+				<label>{{ form.saddest.label }}</label>
+			</div>
+			<div class="row">
+				{{ form.saddest }}
+			</div>
+			<div class="row">
+				<label>{{ form.happiest.label }}</label>
+			</div>
+			<div class="row">
+				{{ form.happiest }}
+			</div>
+			<div class="row">
+				<label>{{ form.comments.label }}</label>
+			</div>
+			<div class="row">
+				{{ form.comments }}
+			</div>
+		</div>
+		<input type="submit" value="Submit">
+	  </form>
+{% endblock %}
