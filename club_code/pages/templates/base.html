@@ -13,9 +13,7 @@
 		rel="stylesheet" 
 		href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" 
 		integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" 
-		crossorigin="anonymous">
-{% load static %}
-
+		crossorigin="anonymous">{% load static %}
 	<link 
 		rel="stylesheet" 
 		type="text/css" 
@@ -24,10 +22,7 @@
     	rel="shortcut icon" 
     	href="/static/favicon.ico">
   </head>
-  <body>
-	<p>Base.html is here!<p>
-    	{% block navbar %}{% endblock %}
-    <p>end of base template</p>
+  <body>{% block navbar %}{% endblock %}
 	<!-- JS, Popper.js, and jQuery -->
 	<script 
 		src="https://code.jquery.com/jquery-3.5.1.slim.min.js" 
