@@ -17,3 +17,12 @@ class Review(models.Model):
 	comments = models.TextField(max_length=1500)
 	created = models.DateTimeField(auto_now_add=True)
 	rating = models.TextField(max_length=2)
+
+class Wish(models.Model):
+	def __str__(self):
+		return str('Wish List Entry ' + str(self.id))
+
+	user_id = models.ForeignKey(User, on_delete=models.CASCADE)
+	title = 	title = models.TextField(max_length=200)
+	author = models.TextField(max_length=200)
+	image = models.ImageField(upload_to='images/')
